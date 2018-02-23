@@ -1,1 +1,1 @@
-cosnole.log('test-file-02.js');
+console.log('test-file-02.js');
