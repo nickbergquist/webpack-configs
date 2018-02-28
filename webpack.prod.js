@@ -9,10 +9,13 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 
 // Current: JS transpiled to es5, minified and no sourcemap created
-//          CSS built, unminified and external sourcemap created
+//          CSS built, vendor-prefixed, minified and no sourcemap created
 
-module.exports = merge(common, {
-    devtool: 'source-map',
+// Required: JS transpiled to es5, minified and external sourcemap
+//           CSS built, vendor-prefixed, minified and external sourcemap
+
+const config = merge(common, {
+    devtool: 'none',
     plugins: [
         new UglifyJSPlugin(),
         new webpack.DefinePlugin({
@@ -20,3 +23,5 @@ module.exports = merge(common, {
         })
     ]
 });
+
+module.exports = config;

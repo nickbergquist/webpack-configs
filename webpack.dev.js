@@ -8,7 +8,10 @@ const merge = require('webpack-merge');
 // Current: JS transpiled to es5 and inline sourcemap created
 //          CSS built, unminified and inline sourcemap created
 
-module.exports = merge(common, {
+// Required: JS transpiled to es5 and inline sourcemap
+//           CSS built, vendor-prefixed, unminified and inline sourcemap created 
+
+const config = merge(common, {
     devtool: 'inline-source-map',
     devServer: {
         open: true,
@@ -16,3 +19,5 @@ module.exports = merge(common, {
         stats: 'errors-only'
     } 
 });
+
+module.exports = config;

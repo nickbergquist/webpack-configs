@@ -2,15 +2,21 @@
 
 const path = require('path');
 
+const webpack = require('webpack');
+const autoprefixer = require('autoprefixer');
+
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-
-module.exports = {
+const config =  {
     context: path.resolve(__dirname, 'src'),
     entry: {
         app: './app.js'
+    },
+    output: {
+        filename: '[name].bundle.js',
+        path: path.resolve(__dirname, 'dist')
     },
     module: {
         rules: [
@@ -18,9 +24,21 @@ module.exports = {
                 test: /\.scss$/,
                 use: ExtractTextPlugin.extract({
                     use: [
-                        {loader: 'css-loader', options: {sourceMap: true}},
-                        {loader: 'resolve-url-loader', options: {sourceMap: true}},
-                        {loader: 'sass-loader', options: {sourceMap: true}}
+                        {
+                            loader: 'css-loader', 
+                            options: { 
+                                minimize: true
+                            }
+                        },
+                        {
+                            loader: 'resolve-url-loader'
+                        },
+                        {
+                            loader: 'postcss-loader'
+                        },
+                        {
+                            loader: 'sass-loader'
+                        }
                     ],
                     fallback: 'style-loader'
                   })
@@ -34,7 +52,12 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                use: ['html-loader']
+                use: [{ 
+                    loader: 'html-loader', 
+                    options: { 
+                        minimize: true
+                    }
+                }]
             }
         ]
     },
@@ -46,9 +69,7 @@ module.exports = {
         new HtmlWebpackPlugin({ 
             template: 'index.html'
         })
-    ],
-    output: {
-        filename: '[name].bundle.js',
-        path: path.resolve(__dirname, 'dist')
-    }
+    ]
 };
+
+module.exports = config;
