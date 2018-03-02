@@ -11,11 +11,8 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 // Current: JS transpiled to es5, minified and no sourcemap created
 //          CSS built, vendor-prefixed, minified and no sourcemap created
 
-// Required: JS transpiled to es5, minified and external sourcemap
-//           CSS built, vendor-prefixed, minified and external sourcemap
-
 const config = merge(common, {
-    devtool: 'none',  // 'source-map' is recommended for production
+    devtool: 'none',  // 'source-map' usually recommended for production
     plugins: [
         new UglifyJSPlugin(),
         new webpack.DefinePlugin({

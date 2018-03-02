@@ -6,9 +6,9 @@ const merge = require('webpack-merge');
 
 
 // Current: JS transpiled to es5 and inline sourcemap created. Changes to JS are
-//          reflected in live reload via webpack-dev-server
-//          CSS built, unminified and inline sourcemap created but not mapped 
-//          back to SCSS files properly
+//          reflected in live reload via webpack-dev-server.
+//          CSS built, vendor-prefixed, minified and inline sourcemap created, 
+//          mapped back to SCSS files.
 
 
 const config = merge(common, {

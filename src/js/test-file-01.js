@@ -1,6 +1,6 @@
-console.log('test-file-01.js');
+console.log('This is test-file-01.js');
 
-var name = 'John', mood = 'happy';
+var name = 'Eyore', mood = 'gloomy';
 console.log(`Hey ${name}, are you feeling ${mood} today?` );
 
 var a = 'dev';
