@@ -27,6 +27,7 @@ const config =  {
                         {
                             loader: 'css-loader', 
                             options: { 
+                                sourceMap: true,
                                 minimize: true
                             }
                         },
@@ -34,10 +35,16 @@ const config =  {
                             loader: 'resolve-url-loader'
                         },
                         {
-                            loader: 'postcss-loader'
+                            loader: 'postcss-loader',
+                            options: { 
+                                sourceMap: 'inline'
+                            }
                         },
                         {
-                            loader: 'sass-loader'
+                            loader: 'sass-loader',
+                            options: { 
+                                sourceMap: true
+                            }
                         }
                     ],
                     fallback: 'style-loader'

@@ -5,11 +5,11 @@ const common = require('./webpack.common.js');
 const merge = require('webpack-merge');
 
 
-// Current: JS transpiled to es5 and inline sourcemap created
-//          CSS built, unminified and inline sourcemap created
+// Current: JS transpiled to es5 and inline sourcemap created. Changes to JS are
+//          reflected in live reload via webpack-dev-server
+//          CSS built, unminified and inline sourcemap created but not mapped 
+//          back to SCSS files properly
 
-// Required: JS transpiled to es5 and inline sourcemap
-//           CSS built, vendor-prefixed, unminified and inline sourcemap created 
 
 const config = merge(common, {
     devtool: 'inline-source-map',

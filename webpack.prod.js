@@ -15,7 +15,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 //           CSS built, vendor-prefixed, minified and external sourcemap
 
 const config = merge(common, {
-    devtool: 'none',
+    devtool: 'none',  // 'source-map' is recommended for production
     plugins: [
         new UglifyJSPlugin(),
         new webpack.DefinePlugin({
